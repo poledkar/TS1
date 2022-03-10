@@ -9,4 +9,10 @@ public class PoledkarTest {
         Poledkar poledkar = new Poledkar();
         assertEquals(6, poledkar.factorial(3));
     }
+
+    @Test
+    public void recursiveFactorialTest() {
+        Poledkar poledkar = new Poledkar();
+        assertEquals(24, poledkar.recursiveFactorial(4));
+    }
 }
