@@ -1,0 +1,126 @@
+
+TEST CASES
+case	Registrace	Jméno	Příjmení	Destinace	Datum narození	Sleva	pairings
+1	ANO	NULL	NULL	v EU	DD.MM.YYYY	Student	15
+2	NE	NULL	Písmena	mimo EU	MM/DD/YYYY	Důchodce	15
+3	ANO	Písmena	NULL	mimo EU	MM/DD/YYYY	Slevový kupon	13
+4	NE	Písmena	Písmena	v EU	DD.MM.YYYY	Student	11
+5	ANO	Zvláštní znaky	Zvláštní znaky	v EU	YYYY-MM-DD	Důchodce	14
+6	NE	Zvláštní znaky	NULL	mimo EU	YYYY-MM-DD	Slevový kupon	10
+7	NE	NULL	Zvláštní znaky	mimo EU	DD.MM.YYYY	Slevový kupon	8
+8	ANO	Písmena	Písmena	mimo EU	YYYY-MM-DD	Student	5
+9	~ANO	Zvláštní znaky	Písmena	v EU	MM/DD/YYYY	Slevový kupon	5
+10	~NE	Písmena	Zvláštní znaky	~v EU	MM/DD/YYYY	Student	4
+11	~NE	Zvláštní znaky	NULL	~mimo EU	DD.MM.YYYY	Důchodce	3
+12	~ANO	NULL	~Zvláštní znaky	~v EU	YYYY-MM-DD	~Důchodce	1
+13	~NE	Písmena	~NULL	~v EU	~YYYY-MM-DD	Důchodce	1
+14	~ANO	Zvláštní znaky	~Zvláštní znaky	~mimo EU	~DD.MM.YYYY	Student	1
+
+PAIRING DETAILS
+var1	var2	value1	value2	appearances	cases
+Jméno	Příjmení	NULL	NULL	1	1
+Jméno	Příjmení	NULL	Písmena	1	2
+Jméno	Příjmení	NULL	Zvláštní znaky	2	7, 12
+Jméno	Příjmení	Písmena	NULL	2	3, 13
+Jméno	Příjmení	Písmena	Písmena	2	4, 8
+Jméno	Příjmení	Písmena	Zvláštní znaky	1	10
+Jméno	Příjmení	Zvláštní znaky	NULL	2	6, 11
+Jméno	Příjmení	Zvláštní znaky	Písmena	1	9
+Jméno	Příjmení	Zvláštní znaky	Zvláštní znaky	2	5, 14
+Jméno	Datum narození	NULL	DD.MM.YYYY	2	1, 7
+Jméno	Datum narození	NULL	MM/DD/YYYY	1	2
+Jméno	Datum narození	NULL	YYYY-MM-DD	1	12
+Jméno	Datum narození	Písmena	DD.MM.YYYY	1	4
+Jméno	Datum narození	Písmena	MM/DD/YYYY	2	3, 10
+Jméno	Datum narození	Písmena	YYYY-MM-DD	2	8, 13
+Jméno	Datum narození	Zvláštní znaky	DD.MM.YYYY	2	11, 14
+Jméno	Datum narození	Zvláštní znaky	MM/DD/YYYY	1	9
+Jméno	Datum narození	Zvláštní znaky	YYYY-MM-DD	2	5, 6
+Jméno	Sleva	NULL	Student	1	1
+Jméno	Sleva	NULL	Důchodce	2	2, 12
+Jméno	Sleva	NULL	Slevový kupon	1	7
+Jméno	Sleva	Písmena	Student	3	4, 8, 10
+Jméno	Sleva	Písmena	Důchodce	1	13
+Jméno	Sleva	Písmena	Slevový kupon	1	3
+Jméno	Sleva	Zvláštní znaky	Student	1	14
+Jméno	Sleva	Zvláštní znaky	Důchodce	2	5, 11
+Jméno	Sleva	Zvláštní znaky	Slevový kupon	2	6, 9
+Jméno	Registrace	NULL	ANO	2	1, 12
+Jméno	Registrace	NULL	NE	2	2, 7
+Jméno	Registrace	Písmena	ANO	2	3, 8
+Jméno	Registrace	Písmena	NE	3	4, 10, 13
+Jméno	Registrace	Zvláštní znaky	ANO	3	5, 9, 14
+Jméno	Registrace	Zvláštní znaky	NE	2	6, 11
+Jméno	Destinace	NULL	v EU	2	1, 12
+Jméno	Destinace	NULL	mimo EU	2	2, 7
+Jméno	Destinace	Písmena	v EU	3	4, 10, 13
+Jméno	Destinace	Písmena	mimo EU	2	3, 8
+Jméno	Destinace	Zvláštní znaky	v EU	2	5, 9
+Jméno	Destinace	Zvláštní znaky	mimo EU	3	6, 11, 14
+Příjmení	Datum narození	NULL	DD.MM.YYYY	2	1, 11
+Příjmení	Datum narození	NULL	MM/DD/YYYY	1	3
+Příjmení	Datum narození	NULL	YYYY-MM-DD	2	6, 13
+Příjmení	Datum narození	Písmena	DD.MM.YYYY	1	4
+Příjmení	Datum narození	Písmena	MM/DD/YYYY	2	2, 9
+Příjmení	Datum narození	Písmena	YYYY-MM-DD	1	8
+Příjmení	Datum narození	Zvláštní znaky	DD.MM.YYYY	2	7, 14
+Příjmení	Datum narození	Zvláštní znaky	MM/DD/YYYY	1	10
+Příjmení	Datum narození	Zvláštní znaky	YYYY-MM-DD	2	5, 12
+Příjmení	Sleva	NULL	Student	1	1
+Příjmení	Sleva	NULL	Důchodce	2	11, 13
+Příjmení	Sleva	NULL	Slevový kupon	2	3, 6
+Příjmení	Sleva	Písmena	Student	2	4, 8
+Příjmení	Sleva	Písmena	Důchodce	1	2
+Příjmení	Sleva	Písmena	Slevový kupon	1	9
+Příjmení	Sleva	Zvláštní znaky	Student	2	10, 14
+Příjmení	Sleva	Zvláštní znaky	Důchodce	2	5, 12
+Příjmení	Sleva	Zvláštní znaky	Slevový kupon	1	7
+Příjmení	Registrace	NULL	ANO	2	1, 3
+Příjmení	Registrace	NULL	NE	3	6, 11, 13
+Příjmení	Registrace	Písmena	ANO	2	8, 9
+Příjmení	Registrace	Písmena	NE	2	2, 4
+Příjmení	Registrace	Zvláštní znaky	ANO	3	5, 12, 14
+Příjmení	Registrace	Zvláštní znaky	NE	2	7, 10
+Příjmení	Destinace	NULL	v EU	2	1, 13
+Příjmení	Destinace	NULL	mimo EU	3	3, 6, 11
+Příjmení	Destinace	Písmena	v EU	2	4, 9
+Příjmení	Destinace	Písmena	mimo EU	2	2, 8
+Příjmení	Destinace	Zvláštní znaky	v EU	3	5, 10, 12
+Příjmení	Destinace	Zvláštní znaky	mimo EU	2	7, 14
+Datum narození	Sleva	DD.MM.YYYY	Student	3	1, 4, 14
+Datum narození	Sleva	DD.MM.YYYY	Důchodce	1	11
+Datum narození	Sleva	DD.MM.YYYY	Slevový kupon	1	7
+Datum narození	Sleva	MM/DD/YYYY	Student	1	10
+Datum narození	Sleva	MM/DD/YYYY	Důchodce	1	2
+Datum narození	Sleva	MM/DD/YYYY	Slevový kupon	2	3, 9
+Datum narození	Sleva	YYYY-MM-DD	Student	1	8
+Datum narození	Sleva	YYYY-MM-DD	Důchodce	3	5, 12, 13
+Datum narození	Sleva	YYYY-MM-DD	Slevový kupon	1	6
+Datum narození	Registrace	DD.MM.YYYY	ANO	2	1, 14
+Datum narození	Registrace	DD.MM.YYYY	NE	3	4, 7, 11
+Datum narození	Registrace	MM/DD/YYYY	ANO	2	3, 9
+Datum narození	Registrace	MM/DD/YYYY	NE	2	2, 10
+Datum narození	Registrace	YYYY-MM-DD	ANO	3	5, 8, 12
+Datum narození	Registrace	YYYY-MM-DD	NE	2	6, 13
+Datum narození	Destinace	DD.MM.YYYY	v EU	2	1, 4
+Datum narození	Destinace	DD.MM.YYYY	mimo EU	3	7, 11, 14
+Datum narození	Destinace	MM/DD/YYYY	v EU	2	9, 10
+Datum narození	Destinace	MM/DD/YYYY	mimo EU	2	2, 3
+Datum narození	Destinace	YYYY-MM-DD	v EU	3	5, 12, 13
+Datum narození	Destinace	YYYY-MM-DD	mimo EU	2	6, 8
+Sleva	Registrace	Student	ANO	3	1, 8, 14
+Sleva	Registrace	Student	NE	2	4, 10
+Sleva	Registrace	Důchodce	ANO	2	5, 12
+Sleva	Registrace	Důchodce	NE	3	2, 11, 13
+Sleva	Registrace	Slevový kupon	ANO	2	3, 9
+Sleva	Registrace	Slevový kupon	NE	2	6, 7
+Sleva	Destinace	Student	v EU	3	1, 4, 10
+Sleva	Destinace	Student	mimo EU	2	8, 14
+Sleva	Destinace	Důchodce	v EU	3	5, 12, 13
+Sleva	Destinace	Důchodce	mimo EU	2	2, 11
+Sleva	Destinace	Slevový kupon	v EU	1	9
+Sleva	Destinace	Slevový kupon	mimo EU	3	3, 6, 7
+Registrace	Destinace	ANO	v EU	4	1, 5, 9, 12
+Registrace	Destinace	ANO	mimo EU	3	3, 8, 14
+Registrace	Destinace	NE	v EU	3	4, 10, 13
+Registrace	Destinace	NE	mimo EU	4	2, 6, 7, 11

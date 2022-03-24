@@ -1,0 +1,4 @@
+Registrace	Jméno	Příjmení	Destinace	Datum narození	Sleva
+ANO	NULL	NULL	v EU	DD.MM.YYYY	Student
+NE	Písmena	Písmena	mimo EU	MM/DD/YYYY	Důchodce
+	Zvláštní znaky	Zvláštní znaky		YYYY-MM-DD	Slevový kupon
