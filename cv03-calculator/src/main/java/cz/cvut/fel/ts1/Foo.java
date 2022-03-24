@@ -1,4 +1,4 @@
-package lab03;
+package cz.cvut.fel.ts1;
 
 public class Foo {
 
