@@ -1,15 +1,15 @@
-﻿test case;Registrace;Jméno;Příjmení;Destinace;Datum narození;Sleva;pairings
-1;ANO;NULL;NULL;v EU;DD.MM.YYYY;Student;15
-2;NE;NULL;Písmena;mimo EU;MM/DD/YYYY;Důchodce;15
-3;ANO;Písmena;NULL;mimo EU;MM/DD/YYYY;Slevový kupon;13
-4;NE;Písmena;Písmena;v EU;DD.MM.YYYY;Student;11
-5;ANO;Zvláštní znaky;Zvláštní znaky;v EU;YYYY-MM-DD;Důchodce;14
-6;NE;Zvláštní znaky;NULL;mimo EU;YYYY-MM-DD;Slevový kupon;10
-7;NE;NULL;Zvláštní znaky;mimo EU;DD.MM.YYYY;Slevový kupon;8
-8;ANO;Písmena;Písmena;mimo EU;YYYY-MM-DD;Student;5
-9;~ANO;Zvláštní znaky;Písmena;v EU;MM/DD/YYYY;Slevový kupon;5
-10;~NE;Písmena;Zvláštní znaky;~v EU;MM/DD/YYYY;Student;4
-11;~NE;Zvláštní znaky;NULL;~mimo EU;DD.MM.YYYY;Důchodce;3
-12;~ANO;NULL;~Zvláštní znaky;~v EU;YYYY-MM-DD;~Důchodce;1
-13;~NE;Písmena;~NULL;~v EU;~YYYY-MM-DD;Důchodce;1
-14;~ANO;Zvláštní znaky;~Zvláštní znaky;~mimo EU;~DD.MM.YYYY;Student;1
+﻿test case,Registrace,Jméno,Příjmení,Destinace,Datum narození,Sleva,pairings
+1,ANO,NULL,NULL,v EU,DD.MM.YYYY,Student,15
+2,NE,NULL,Písmena,mimo EU,MM/DD/YYYY,Důchodce,15
+3,ANO,Písmena,NULL,mimo EU,MM/DD/YYYY,Slevový kupon,13
+4,NE,Písmena,Písmena,v EU,DD.MM.YYYY,Student,11
+5,ANO,Zvláštní znaky,Zvláštní znaky,v EU,YYYY-MM-DD,Důchodce,14
+6,NE,Zvláštní znaky,NULL,mimo EU,YYYY-MM-DD,Slevový kupon,10
+7,NE,NULL,Zvláštní znaky,mimo EU,DD.MM.YYYY,Slevový kupon,8
+8,ANO,Písmena,Písmena,mimo EU,YYYY-MM-DD,Student,5
+9,~ANO,Zvláštní znaky,Písmena,v EU,MM/DD/YYYY,Slevový kupon,5
+10,~NE,Písmena,Zvláštní znaky,~v EU,MM/DD/YYYY,Student,4
+11,~NE,Zvláštní znaky,NULL,~mimo EU,DD.MM.YYYY,Důchodce,3
+12,~ANO,NULL,~Zvláštní znaky,~v EU,YYYY-MM-DD,~Důchodce,1
+13,~NE,Písmena,~NULL,~v EU,~YYYY-MM-DD,Důchodce,1
+14,~ANO,Zvláštní znaky,~Zvláštní znaky,~mimo EU,~DD.MM.YYYY,Student,1
