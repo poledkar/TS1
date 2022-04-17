@@ -53,6 +53,30 @@ public class StandardItemTest {
         Assertions.assertEquals(LOYALTY_POINTS, item.getLoyaltyPoints());
     }
 
+    // Additional tests to disallow nulls
+
+    @Test
+    public void constructor_withNullName_throwsNullPointerException() {
+        Assertions.assertThrows(NullPointerException.class,
+                () -> new StandardItem(ID, null, PRICE, CATEGORY, LOYALTY_POINTS));
+    }
+
+    @Test
+    public void constructor_withNullCategory_throwsNullPointerException() {
+        Assertions.assertThrows(NullPointerException.class,
+                () -> new StandardItem(ID, NAME, PRICE, null, LOYALTY_POINTS));
+    }
+
+    @Test
+    public void setName_withNullName_throwsNullPointerException() {
+        Assertions.assertThrows(NullPointerException.class, () -> item.setName(null));
+    }
+
+    @Test
+    public void setCategory_withNullCategory_throwsNullPointerException() {
+        Assertions.assertThrows(NullPointerException.class, () -> item.setCategory(null));
+    }
+
     // method copy()
 
     @Test
@@ -95,7 +119,6 @@ public class StandardItemTest {
         Assertions.assertEquals(expected, item.equals(other));
     }
 
-    @Disabled("Does not pass due to bug in Item.equals(Object)")
     @ParameterizedTest(name = "new StandardItem(" + ParameterizedTest.ARGUMENTS_PLACEHOLDER + ").equals(item)")
     @MethodSource("equalsParameters")
     public void equals_ofOther_returnsExpectedResult(
@@ -112,8 +135,8 @@ public class StandardItemTest {
                 {ID, NAME, PRICE*1.1f, CATEGORY, LOYALTY_POINTS, false},
                 {ID, NAME, PRICE, "Small "+CATEGORY, LOYALTY_POINTS, false},
                 {ID, NAME, PRICE, CATEGORY, LOYALTY_POINTS-1, false},
-                {ID, null, PRICE, CATEGORY, LOYALTY_POINTS, false},
-                {ID, NAME, PRICE, null, LOYALTY_POINTS, false},
+        //      {ID, null, PRICE, CATEGORY, LOYALTY_POINTS, false}, // no longer
+        //      {ID, NAME, PRICE, null, LOYALTY_POINTS, false},     // allowed
                 {ID, new String(NAME.toCharArray()), PRICE, CATEGORY, LOYALTY_POINTS, true},
                 {ID, NAME, PRICE, new String(CATEGORY.toCharArray()), LOYALTY_POINTS, true}
         };

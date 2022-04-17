@@ -1,6 +1,7 @@
 package shop;
 
 
+import java.util.Objects;
 
 /**
  * The basic class for item in the EShop.
@@ -15,9 +16,9 @@ public abstract class Item {
     
     public Item(int id, String name, float price, String category) {
         this.id = id;
-        this.name = name;
+        this.name = Objects.requireNonNull(name, "name must not be null");
         this.price = price;
-        this.category = category;
+        this.category = Objects.requireNonNull(category, "category must not be null");
     }
     
     @Override
@@ -38,7 +39,7 @@ public abstract class Item {
     }
     
     public void setName(String name) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name, "name must not be null");
     }
     
     public float getPrice() {
@@ -55,7 +56,7 @@ public abstract class Item {
     }
     
     public void setCategory(String category) {
-        this.category = category;
+        this.category = Objects.requireNonNull(category, "category must not be null");
     }
     
     @Override
