@@ -2,7 +2,10 @@ package shop;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Date;
 
@@ -11,9 +14,9 @@ import java.util.Date;
  */
 public class StandardItemTest {
     private static final int ID = 123;
-    private static final String NAME = "Plush duck";
+    private static final String NAME = "Plush Duck";
     private static final float PRICE = 7.89f;
-    private static final String CATEGORY = "Plush toys";
+    private static final String CATEGORY = "Plush Toys";
     private static final int LOYALTY_POINTS = 3;
 
     private StandardItem item;
@@ -57,7 +60,7 @@ public class StandardItemTest {
         Assertions.assertNotSame(item, item.copy());
     }
 
-    @Test
+    @Test @Disabled("redundant, no further copy() test would pass otherwise")
     public void copy_ofInstance_returnSomeInstance() {
         Assertions.assertNotNull(item.copy());
     }
@@ -84,8 +87,57 @@ public class StandardItemTest {
 
     // equals(Object other)
 
+    @ParameterizedTest(name = "item.equals(new StandardItem(" + ParameterizedTest.ARGUMENTS_PLACEHOLDER + "))")
+    @MethodSource("equalsParameters")
+    public void equals_withOther_returnsExpectedResult(
+            int id, String name, float price, String category, int loyaltyPoints, boolean expected) {
+        Item other = new StandardItem(id, name, price, category, loyaltyPoints);
+        Assertions.assertEquals(expected, item.equals(other));
+    }
+
+    @Disabled("Does not pass due to bug in Item.equals(Object)")
+    @ParameterizedTest(name = "new StandardItem(" + ParameterizedTest.ARGUMENTS_PLACEHOLDER + ").equals(item)")
+    @MethodSource("equalsParameters")
+    public void equals_ofOther_returnsExpectedResult(
+            int id, String name, float price, String category, int loyaltyPoints, boolean expected) {
+        Item other = new StandardItem(id, name, price, category, loyaltyPoints);
+        Assertions.assertEquals(expected, other.equals(item));
+    }
+
+    public static Object[][] equalsParameters() {
+        return new Object[][] {
+                {ID, NAME, PRICE, CATEGORY, LOYALTY_POINTS, true},
+                {ID+1, NAME, PRICE, CATEGORY, LOYALTY_POINTS, false},
+                {ID, "Big "+NAME, PRICE, CATEGORY, LOYALTY_POINTS, false},
+                {ID, NAME, PRICE*1.1f, CATEGORY, LOYALTY_POINTS, false},
+                {ID, NAME, PRICE, "Small "+CATEGORY, LOYALTY_POINTS, false},
+                {ID, NAME, PRICE, CATEGORY, LOYALTY_POINTS-1, false},
+                {ID, null, PRICE, CATEGORY, LOYALTY_POINTS, false},
+                {ID, NAME, PRICE, null, LOYALTY_POINTS, false},
+                {ID, new String(NAME.toCharArray()), PRICE, CATEGORY, LOYALTY_POINTS, true},
+                {ID, NAME, PRICE, new String(CATEGORY.toCharArray()), LOYALTY_POINTS, true}
+        };
+    }
+
+    // additional tests not fitting parameterization scheme
+
+    /* It's the point of these tests to check the correctness of equals() method,
+     * hence IntelliJ Idea's warnings about equals()'s result being known constant
+     * does not apply. assert(Not)Equals() methods are not guaranteed to actually
+     * call equals(), hence can't be used in these tests. Corresponding
+     * @SuppressWarnings do not seem to reliably work, hence inline noinspection
+     * comments are used.
+     */
+
+    @Test
+    public void equals_null_returnsFalse() {
+        //noinspection ConstantConditions,SimplifiableAssertion
+        Assertions.assertFalse(item.equals(null));
+    }
+
     @Test
     public void equals_withItself_returnsTrue() {
+        //noinspection SimplifiableAssertion,EqualsWithItself
         Assertions.assertTrue(item.equals(item));
     }
 
@@ -93,8 +145,7 @@ public class StandardItemTest {
     public void equals_withItselfDiscounted_returnsFalse() {
         Date now = new Date();
         DiscountedItem other = new DiscountedItem(ID, NAME, PRICE, CATEGORY, 0, now, now);
+        //noinspection SimplifiableAssertion,EqualsBetweenInconvertibleTypes
         Assertions.assertFalse(item.equals(other));
     }
-
-
 }
