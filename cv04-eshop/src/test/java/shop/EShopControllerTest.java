@@ -77,7 +77,7 @@ public class EShopControllerTest {
                 "Bad error message");
     }
 
-    @Test @Disabled("purchaseShoppingCart is buggy")
+    @Test
     public void processTestB() {
         EShopController controller = new EShopController();
         controller.getStorage().insertItems(toy, 1);

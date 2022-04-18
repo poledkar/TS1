@@ -76,8 +76,15 @@ public class Storage {
      */
     public void processOrder(Order order) throws NoItemInStorage {
         ArrayList<Item> items = order.getItems();
-        for (Item i : items) {
-            removeItems(i, 1);
+        for (int index = 0; index < items.size(); index++) {
+            Item item = items.get(index);
+            try {
+                removeItems(item, 1);
+            } finally {
+                for (int previous = 0; previous < index; previous++) {
+                    insertItems(items.get(previous), 1);
+                }
+            }
         }
     }
 
