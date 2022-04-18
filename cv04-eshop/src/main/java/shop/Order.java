@@ -1,6 +1,7 @@
 package shop;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -10,24 +11,26 @@ import java.util.ArrayList;
 public class Order {
 
     private ArrayList<Item> items;
-    String customerName;
-    String customerAddress;
-    int state;
+    private String customerName;
+    private String customerAddress;
+    private int state;
 
     public Order(ShoppingCart cart, String customerName, String customerAddress, int state) {
         items = cart.getCartItems();
-        this.customerName = customerName;
-        this.customerAddress = customerAddress;
+        this.customerName = Objects.requireNonNull(customerName, "customerName must not be null");
+        this.customerAddress = Objects.requireNonNull(customerAddress, "customerAddress must not be null");
         this.state = state;
     }
 
     public Order(ShoppingCart cart, String customerName, String customerAddress) {
+        /*
         items = cart.getCartItems();
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.state = 0;
+         */
+        this(cart, customerName, customerAddress, 0);
     }
-    
     
     public ArrayList<Item> getItems() {
         return items;
@@ -42,7 +45,7 @@ public class Order {
     }
 
     public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+        this.customerAddress = Objects.requireNonNull(customerAddress, "customerAddress must not be null");
     }
 
     
@@ -51,7 +54,7 @@ public class Order {
     }
 
     public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+        this.customerName = Objects.requireNonNull(customerName, "customerName must not be null");
     }
     
     

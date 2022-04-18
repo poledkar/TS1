@@ -1,14 +1,13 @@
 package shop;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class ShoppingCartTest {
 
     // unit tests to ensure than ShoppingCart does not put nulls into Order
 
-    @Test @Disabled("ShoppingCart null handling is broken!")
+    @Test
     public void constructor_givenNullItems_throwsNullPointerException() {
         Assertions.assertThrows(NullPointerException.class, () -> new ShoppingCart(null));
     }
@@ -25,7 +24,7 @@ public class ShoppingCartTest {
         // This is not sufficient test, because addItem(null) puts null into list before throwing!
     }
 
-    @Test @Disabled("ShoppingCart null handling is broken!")
+    @Test
     public void addItem_givenNullItem_doesNotPutAnythingToItemList() {
         ShoppingCart cart = new ShoppingCart();
         try {

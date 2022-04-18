@@ -2,7 +2,6 @@ package shop;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -49,17 +48,19 @@ public class OrderTest {
 
     @Test
     public void constructorWithState_givenNullCart_throwsNullPointerException() {
+        // IntelliJ Idea itself protests against putting null cart.
+        //noinspection ConstantConditions
+        Assertions.assertThrows(NullPointerException.class, () -> new Order(null, NAME, ADDRESS, STATE));
         // There are more bugs when ShoppingCart exists but contains some nulls,
         // but that seems to be a matter for ShoppingCart tests.
-        Assertions.assertThrows(NullPointerException.class, () -> new Order(null, NAME, ADDRESS, STATE));
     }
 
-    @Test @Disabled("Order null handling is broken!")
+    @Test
     public void constructorWithState_givenNullName_throwsNullPointerException() {
         Assertions.assertThrows(NullPointerException.class, () -> new Order(cart, null, ADDRESS, STATE));
     }
 
-    @Test @Disabled("Order null handling is broken!")
+    @Test
     public void constructorWithState_givenNullAddress_throwsNullPointerException() {
         Assertions.assertThrows(NullPointerException.class, () -> new Order(cart, NAME, null, STATE));
     }
@@ -91,12 +92,12 @@ public class OrderTest {
         Assertions.assertThrows(NullPointerException.class, () -> new Order(null, NAME, ADDRESS));
     }
 
-    @Test @Disabled("Order null handling is broken!")
+    @Test
     public void constructorWithoutState_givenNullName_throwsNullPointerException() {
         Assertions.assertThrows(NullPointerException.class, () -> new Order(cart, null, ADDRESS));
     }
 
-    @Test @Disabled("Order null handling is broken!")
+    @Test
     public void constructorWithoutState_givenNullAddress_throwsNullPointerException() {
         Assertions.assertThrows(NullPointerException.class, () -> new Order(cart, NAME, null));
     }

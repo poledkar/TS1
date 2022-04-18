@@ -1,6 +1,7 @@
 package shop;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -11,10 +12,10 @@ import java.util.ArrayList;
 public class ShoppingCart {
 
     
-    ArrayList<Item> items;
+    private final ArrayList<Item> items;
 
     public ShoppingCart(ArrayList<Item> items) {
-        this.items = items;
+        this.items = Objects.requireNonNull(items, "items list must not be null");
     }
     
     public ShoppingCart() {
@@ -30,7 +31,7 @@ public class ShoppingCart {
     }
 
     public void addItem(Item temp_item) {
-        items.add(temp_item);
+        items.add(Objects.requireNonNull(temp_item, "item to add must not be null"));
         System.out.println("Item with ID " + temp_item.getID() + " added to the shopping cart.");
     }
 
