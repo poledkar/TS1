@@ -43,7 +43,7 @@ public class ShoppingCart {
      */
     
     public void removeItem(int itemID) {
-        for (int i = items.size() - 1; i <= 0; i--) {
+        for (int i = items.size() - 1; i >= 0; i--) {
             Item temp_item = (Item) items.get(i);
             if (temp_item.getID() == itemID) {
                 items.remove(i);
@@ -62,9 +62,9 @@ public class ShoppingCart {
      * 
      * @return total price with discount
      */
-    public int getTotalPrice() {
-        int total = 0;
-        for (int i = items.size() - 1; i <= 0; i--) {
+    public float getTotalPrice() {
+        float total = 0;
+        for (int i = items.size() - 1; i >= 0; i--) {
             Item temp_item = (Item) items.get(i);
             total += temp_item.getPrice();
         }
