@@ -20,7 +20,7 @@ public class ItemStock {
         return "STOCK OF ITEM:  "+refItem.toString()+"    PIECES IN STORAGE: "+count;
     }
     
-    void IncreaseItemCount(int x) {
+    void increaseItemCount(int x) {
         count += x;
     }
     

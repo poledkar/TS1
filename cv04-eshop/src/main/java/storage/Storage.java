@@ -44,7 +44,7 @@ public class Storage {
             stock.put(item.getID(), new ItemStock(item));
         }
         ItemStock e = stock.get(item.getID());
-        e.IncreaseItemCount(count);
+        e.increaseItemCount(count);
     }
 
     
