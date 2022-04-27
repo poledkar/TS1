@@ -1,0 +1,12 @@
+0;START - 1 - A - 2 - B - 3 - A - 2 - B - 3 - A - 4 - C - 6 - D - 7 - C - 6 - D - 7 - C - 8 - E - 10 - F
+1;START - 1 - A - 2 - B - 5 - C - 6 - D - 7 - C - 6 - D - 9 - E - 10 - F
+2;START - 1 - A - 4 - C - 6 - D - 9 - E - 11 - G - 12 - E - 10 - F
+3;START - 1 - A - 4 - C - 8 - E - 10 - F
+4;START - 1 - A - 2 - B - 3 - A - 2 - B - 5 - C - 8 - E - 10 - F
+5;START - 1 - A - 2 - B - 3 - A - 4 - C - 8 - E - 11 - G - 12 - E - 11 - G - 12 - E - 10 - F
+6;START - 1 - A - 2 - B - 5 - C - 6 - D - 9 - E - 10 - F
+7;START - 1 - A - 2 - B - 5 - C - 8 - E - 11 - G - 12 - E - 10 - F
+8;START - 1 - A - 4 - C - 6 - D - 7 - C - 8 - E - 11 - G - 12 - E - 10 - F
+9;START - 1 - A - 4 - C - 8 - E - 11 - G - 13 - H
+10;START - 1 - A - 4 - C - 6 - D - 9 - E - 11 - G - 13 - H
+11;START - 1 - A - 4 - C - 8 - E - 11 - G - 12 - E - 11 - G - 13 - H
