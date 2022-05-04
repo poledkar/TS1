@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -38,6 +42,9 @@ public class LoginPage {
 
     public LoginPage clickLoginInternal() {
         loginInternalLabel.click();
+        // Better safe than sorry - I does not seem necessary, but I can't test local login.
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOfAllElements(usernameField, passwordField));
         return this;
     }
 

@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class MoodleFormPage extends MoodlePage {
 
@@ -20,11 +24,18 @@ public class MoodleFormPage extends MoodlePage {
     @FindBy(how = How.XPATH, using = "//span[@class='qno'][text()='4']//ancestor::div[@class='info']//following-sibling::div[@class='content']//select")
     private WebElement selectState;
 
-    @FindBy(how = How.ID, using = "mod_quiz_next_nav")
+    @FindBy(how = How.ID, using = "mod_quiz-next-nav")
     private WebElement endTestButton;
 
     public MoodleFormPage(WebDriver driver) {
         super(driver);
+    }
+
+    public MoodleFormPage waitForFormToAppear() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.visibilityOfAllElements(
+                fieldName, fieldSeconds, selectPlanet, selectState, endTestButton));
+        return this;
     }
 
     public MoodleFormPage fillNameAndLabNumber(String answer) {

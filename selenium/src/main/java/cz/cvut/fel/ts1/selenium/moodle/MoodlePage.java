@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public abstract class MoodlePage {
 
@@ -26,6 +30,9 @@ public abstract class MoodlePage {
 
     public MoodlePage openUserMenu() {
         userDropDown.click();
+        // Wait for drop down menu to open
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(500));
+        wait.until(ExpectedConditions.elementToBeClickable(logoutLink));
         return this;
     }
 

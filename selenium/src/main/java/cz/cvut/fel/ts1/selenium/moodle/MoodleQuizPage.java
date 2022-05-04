@@ -30,6 +30,7 @@ public class MoodleQuizPage extends MoodlePage {
 
     public MoodleFormPage confirmStartAttempt() {
         startAttemptButton.click();
-        return new MoodleFormPage(driver);
+        // dialog closed, but test may not be loading yet.
+        return new MoodleFormPage(driver).waitForFormToAppear();
     }
 }

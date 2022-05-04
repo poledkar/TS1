@@ -90,6 +90,8 @@ public class MoodleTest {
                 .submitAll()
                 .confirmSubmit()
                 .finishReview()
-                .logout();
+                .openUserMenu()
+                .logout()
+                .continueLogout();
     }
 }
